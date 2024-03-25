@@ -38,7 +38,7 @@
     })
 
     // failed: tried to add the word Permissions next to lock button
-    $('.permbutton').append('Permissions')
+    
 
 
 
@@ -94,6 +94,7 @@ $('.folder').accordion({
 
 
 // -- Connect File Structure lock buttons to the permission dialog --
+$('.permbutton').append('Permissions')
 
 // open permissions dialog when a permission button is clicked
 $('.permbutton').click( function( e ) {
