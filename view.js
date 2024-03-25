@@ -1,7 +1,4 @@
 // ---- Define your dialogs  and panels here ----
-    var effective_permissions = define_new_effective_permissions("permission", add_icon_col = true, which_permissions = null)
-    // show side panel
-    $('#sidepanel').append(effective_permissions)
 
     var user_selector = define_new_user_select_field("user", "Select user", on_user_change = function(selected_user){
         $('#permission').attr('username', selected_user)
@@ -11,6 +8,12 @@
     })
     // show user selector/append to side panel element
     $('#sidepanel').append(user_selector)
+
+    var effective_permissions = define_new_effective_permissions("permission", add_icon_col = true, which_permissions = null)
+    // show side panel
+    $('#sidepanel').append(effective_permissions)
+
+
         
     // 1. Define the dialog
     var new_dialog = define_new_dialog('new', 'test title')
