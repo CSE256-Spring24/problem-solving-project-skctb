@@ -37,11 +37,6 @@
         new_dialog.empty().append(explanationText).dialog('open')
     })
 
-    // failed: tried to add the word Permissions next to lock button
-    
-
-
-
 // ---- Display file structure ----
 
 // (recursively) makes and returns an html element (wrapped in a jquery object) for a given file object
