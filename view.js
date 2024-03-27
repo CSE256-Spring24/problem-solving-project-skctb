@@ -40,6 +40,15 @@
         new_dialog.empty().append(explanationText).dialog('open')
     })
 
+    // (Christine) Define confirmation dialog
+    var confirmation_dialog = define_new_dialog('new', 'Confirmation of Change')
+    // (Christine) Open confirmation dialog
+    // *need to figure out how to make it so it only shows when an actual edit happens
+    $('#perm-dialog-ok-button.ui-button.ui-corner-all.ui-widget').click(function(){
+        console.log('ok button clicked!')
+        confirmation_dialog.empty().append('Your change has been made.').dialog('open')
+    })
+
 // ---- Display file structure ----
 
 // (recursively) makes and returns an html element (wrapped in a jquery object) for a given file object
@@ -92,7 +101,7 @@ $('.folder').accordion({
 
 
 // -- Connect File Structure lock buttons to the permission dialog --
-$('.permbutton').append('Edit permissions')
+$('.permbutton').append('Permissions')
 
 // open permissions dialog when a permission button is clicked
 $('.permbutton').click( function( e ) {
