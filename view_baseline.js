@@ -12,7 +12,7 @@ perm_dialog = define_new_dialog('permdialog', title='Permissions', options = {
     buttons: {
         Close:{
             //(Temi)Changed text to clarify language
-            text: "Close",
+            text: "Close Permissions Window",
             id: "perm-dialog-ok-button",
             click: function() {
                 $( this ).dialog( "close" );
