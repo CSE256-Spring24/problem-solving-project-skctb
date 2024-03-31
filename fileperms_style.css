@@ -36,3 +36,8 @@
 .no-close .ui-dialog-titlebar-close {
     display: none;
 }
+
+.user-selection-text {
+    font-size: 24px;
+    font-weight: bold;
+}

@@ -6,14 +6,17 @@
         // !! need to make above line more general 
         // $('#permission').attr('filepath', $(this).attr('username'))
     })
+    
+    // (Christine) Description for effective permissions panel
+    var panel_description = '<p class="user-selection-text">Select user here to see their current permissions</p>'
+    $('#sidepanel').append(panel_description)
+    
     // show user selector/append to side panel element
     $('#sidepanel').append(user_selector)
 
     var effective_permissions = define_new_effective_permissions("permission", add_icon_col = true, which_permissions = null)
     // show side panel
     $('#sidepanel').append(effective_permissions)
-
-
         
     // 1. Define the dialog
     var new_dialog = define_new_dialog('new', 'test title')
@@ -42,10 +45,9 @@
 
     // (Christine) Define confirmation dialog
     var confirmation_dialog = define_new_dialog('new', 'Confirmation of Change')
-    // (Christine) Open confirmation dialog
-    // *need to figure out how to make it so it only shows when an actual edit happens
-    $('#perm-dialog-ok-button.ui-button.ui-corner-all.ui-widget').click(function(){
-        console.log('ok button clicked!')
+    // (Christine) Open confirmation dialog when an edit to permissions is made
+    $('.groupcheckbox').click(function(){
+        console.log('checkbox button clicked!')
         confirmation_dialog.empty().append('Your change has been made.').dialog('open')
     })
 
