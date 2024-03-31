@@ -11,14 +11,14 @@
     
     // (Christine) Description for effective permissions panel
     var panel_description = '<p class="title-text">Select user here to see their current permissions:</p>'
-    $('#sidepanel').append(panel_description)
+    // $('#sidepanel').append(panel_description)
     
     // show user selector/append to side panel element
-    $('#sidepanel').append(user_selector)
+    // $('#sidepanel').append(user_selector)
 
     var effective_permissions = define_new_effective_permissions("permission", add_icon_col = true, which_permissions = null)
     // show side panel
-    $('#sidepanel').append(effective_permissions)
+    // $('#sidepanel').append(effective_permissions)
         
     // 1. Define the dialog
     //Changed text to user permissions
