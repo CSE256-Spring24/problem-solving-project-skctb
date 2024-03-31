@@ -10,15 +10,25 @@ perm_dialog = define_new_dialog('permdialog', title='Permissions', options = {
     height: 500,
     width: 400,
     buttons: {
-        OK:{
-            text: "OK",
+        Confirm:{
+            //(Temi ) added confirm changes button and Changed text to clarify language
+            text: "Confirm Changes",
+            id: "perm-dialog-ok-button",
+            click: function() {
+                $( this ).dialog( "close" );
+            }
+        },
+        Close:{
+            //(Temi)Changed text to clarify language
+            text: "Close",
             id: "perm-dialog-ok-button",
             click: function() {
                 $( this ).dialog( "close" );
             }
         },
         Advanced: {
-            text: "Advanced",
+            //(Temi)Changed text to clarify language
+            text: "Advanced Settings",
             id: "perm-dialog-advanced-button",
             click: function() {
                 open_advanced_dialog(perm_dialog.attr('filepath'))

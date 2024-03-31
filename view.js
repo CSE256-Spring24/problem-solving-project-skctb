@@ -21,7 +21,8 @@
     $('#sidepanel').append(effective_permissions)
         
     // 1. Define the dialog
-    var new_dialog = define_new_dialog('new', 'test title')
+    //Changed text to user permissions
+    var new_dialog = define_new_dialog('new', 'User Permissions')
 
     // 2. Open the dialog on click
     $('.perm_info').click(function(){
