@@ -154,6 +154,7 @@ perm_dialog.append(file_permission_users)
 perm_dialog.append(perm_add_user_select)
 perm_add_user_select.append(perm_remove_user_button) // Cheating a bit again - add the remove button the the 'add user select' div, just so it shows up on the same line.
 perm_dialog.append(grouped_permissions)
+perm_dialog.append("Note: If a group is denied a permission, the all members of that group will be denied access.")
 perm_dialog.append(advanced_expl_div)
 
 // --- Additional logic for reloading contents when needed: ---
