@@ -1,4 +1,6 @@
 // ---- Define your dialogs  and panels here ----
+   // (Christine) Added description to files
+    $('#filestructure').append('<p class="title-text">See files and edit permissions here:</p>')
 
     var user_selector = define_new_user_select_field("user", "Select user", on_user_change = function(selected_user){
         $('#permission').attr('username', selected_user)
@@ -8,7 +10,7 @@
     })
     
     // (Christine) Description for effective permissions panel
-    var panel_description = '<p class="user-selection-text">Select user here to see their current permissions</p>'
+    var panel_description = '<p class="title-text">Select user here to see their current permissions:</p>'
     $('#sidepanel').append(panel_description)
     
     // show user selector/append to side panel element
