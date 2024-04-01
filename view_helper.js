@@ -235,7 +235,6 @@ function define_grouped_permission_checkboxes(id_prefix, which_groups = null) {
         group_table.append(row)
     }  
 
-
     group_table.find('.groupcheckbox').prop('disabled', true)// disable all checkboxes to start
 
     // Update checkboxes when either user or file changes:
@@ -297,8 +296,7 @@ function define_permission_checkboxes(id_prefix, which_permissions = null){
     let perm_table = $(`
     <table id="${id_prefix}" class="ui-widget-content" width="100%">
         <tr id="${id_prefix}_header">
-            <th id="${id_prefix}_header_p" width="99%">Permissions for <span id="${id_prefix}_header_username"></span>
-            </th>
+            <th id="${id_prefix}_header_p" width="99%">Permissions for <span id="${id_prefix}_header_username"></span></th>
             <th id="${id_prefix}_header_allow">Allow</th>
             <th id="${id_prefix}_header_deny">Deny</th>
         </tr>
@@ -309,12 +307,14 @@ function define_permission_checkboxes(id_prefix, which_permissions = null){
     if(which_permissions === null) {
         which_permissions = Object.values(permissions)
     }
+
     // For each type of permission, create a row:
     for(let p of which_permissions){
-        let p_id = p.replace(/[ \/]/g, '_') 
+        let p_id = p.replace(/[ \/]/g, '_')
         let row = $(`<tr id="${id_prefix}_row_${p_id}">
             <td id="${id_prefix}_${p_id}_name">${p}</td>
         </tr>`)
+        
         // Add allow and deny checkboxes:
         for(let ace_type of ['allow', 'deny']) {
             row.append(`<td id="${id_prefix}_${p_id}_${ace_type}_cell">
@@ -324,40 +324,38 @@ function define_permission_checkboxes(id_prefix, which_permissions = null){
         perm_table.append(row)
     }
 
-    perm_table.find('.perm_checkbox').prop('disabled', true)// disable all checkboxes to start
+    perm_table.find('.perm_checkbox').prop('disabled', true) // disable all checkboxes to start
 
     let update_perm_table = function(){
-
-        // get current settings:
+        // Get current settings:
         let username = perm_table.attr('username')
         let filepath = perm_table.attr('filepath')
-        // if both properties are set correctly:
-        if( username && username.length > 0 && (username in all_users) &&
-            filepath && filepath.length > 0 && (filepath in path_to_file)) {
-            
-            // clear previous checkbox state:
+
+        // If both properties are set correctly:
+        if(username && username.length > 0 && (username in all_users) &&
+            filepath && filepath.length > 0 && (filepath in path_to_file)){
+            // Clear previous checkbox state:
             perm_table.find('.perm_checkbox').prop('disabled', false)
             perm_table.find('.perm_checkbox').prop('checked', false)
 
-            //change name on table:
+            // Change name on table:
             $(`#${id_prefix}_header_username`).text(username)
 
             // Get permissions:
             let all_perms = get_total_permissions(path_to_file[filepath], username)
-            for( ace_type in all_perms) { // 'allow' and 'deny'
-                for(allowed_perm in all_perms[ace_type]) {
-                    let p_id = allowed_perm.replace(/[ \/]/g, '_') 
+            for(let ace_type in all_perms) {
+                for(let allowed_perm in all_perms[ace_type]) {
+                    let p_id = allowed_perm.replace(/[ \/]/g, '_')
                     let checkbox = perm_table.find(`#${id_prefix}_${p_id}_${ace_type}_checkbox`)
                     checkbox.prop('checked', true)
                     if(all_perms[ace_type][allowed_perm].inherited) {
-                        // can't uncheck inherited permissions.
+                        // Can't uncheck inherited permissions.
                         checkbox.prop('disabled', true)
                     }
                 }
             }
-        }
-        else {
-            // can't get permissions for this username/filepath - reset everything into a blank state
+        } else {
+            // Can't get permissions for this username/filepath - reset everything into a blank state
             perm_table.find('.perm_checkbox').prop('disabled', true)
             perm_table.find('.perm_checkbox').prop('checked', false)
             $(`#${id_prefix}_header_username`).text('')
@@ -367,63 +365,25 @@ function define_permission_checkboxes(id_prefix, which_permissions = null){
     define_attribute_observer(perm_table, 'username', update_perm_table)
     define_attribute_observer(perm_table, 'filepath', update_perm_table)
 
-    //Update permissions when checkbox is clicked:
+    // Update permissions when checkbox is clicked, and make checkboxes within each permission mutually exclusive:
     perm_table.find('.perm_checkbox').change(function(){
-        console.log(perm_table.attr('filepath'), perm_table.attr('username'), $(this).attr('permission'), $(this).attr('ptype'), $(this).prop('checked'))
-        toggle_permission( perm_table.attr('filepath'), perm_table.attr('username'), $(this).attr('permission'), $(this).attr('ptype'), $(this).prop('checked'))
-        update_perm_table()// reload checkboxes
-    })
-
-    return perm_table
-}
-
-// Define a list of permission groups for a given file, for all users
-function define_file_permission_groups_list(id_prefix){
-
-    let perm_list= $(`
-        <table id="${id_prefix}" class="ui-widget-content" width="100%">
-            <tr id="${id_prefix}_header">
-                <th id="${id_prefix}_header_type">Type</th>
-                <th id="${id_prefix}_header_name">Name</th>
-                <th id="${id_prefix}_header_permission">Permission</th>
-                <th id="${id_prefix}_header_inherited">Inherited from</th>
-            </tr>
-        </table>
-    `)
-
-    let update_perm_list = function(){
-        $(`#${id_prefix} tr:gt(0)`).remove() // remove all old permission stuff - all but the first (title) row of the table.
-
-        let filepath = perm_list.attr('filepath')
-        console.log(filepath)
-
-        if(filepath && filepath.length > 0 && (filepath in path_to_file)) {
-
-            console.log('filepath')
-
-            let file_obj = path_to_file[filepath]
-            let users = get_file_users(file_obj)
-            for(let u in users) {
-                let grouped_perms = get_grouped_permissions(file_obj, u)
-                for(let ace_type in grouped_perms) {
-                    for(let perm in grouped_perms[ace_type]) {
-                        perm_list.append(`<tr id="${id_prefix}_${file_obj.filename}__${u}_${ace_type}_${perm}">
-                            <td id="${id_prefix}_${file_obj.filename}__${u}_${ace_type}_${perm}_type">${ace_type}</td>
-                            <td id="${id_prefix}_${file_obj.filename}__${u}_${ace_type}_${perm}_name">${u}</td>
-                            <td id="${id_prefix}_${file_obj.filename}__${u}_${ace_type}_${perm}_permission">${perm}</td>
-                            <td id="${id_prefix}_${file_obj.filename}__${u}_${ace_type}_${perm}_type">${grouped_perms[ace_type][perm].inherited?"Parent Object":"(not inherited)"}</td>
-                        </tr>`)
-                    }
-                }
-            }
+        let clickedCheckbox = $(this);
+        if(clickedCheckbox.prop('checked')) {
+            let permission = clickedCheckbox.attr('permission');
+            let ptype = clickedCheckbox.attr('ptype');
+            let oppositeType = ptype === 'allow' ? 'deny' : 'allow';
+            let oppositeCheckbox = perm_table.find(`input[permission="${permission}"][ptype="${oppositeType}"]`);
+            oppositeCheckbox.prop('checked', false);
         }
 
-    }
+        console.log(perm_table.attr('filepath'), perm_table.attr('username'), clickedCheckbox.attr('permission'), clickedCheckbox.attr('ptype'), clickedCheckbox.prop('checked'));
+        toggle_permission(perm_table.attr('filepath'), perm_table.attr('username'), clickedCheckbox.attr('permission'), clickedCheckbox.attr('ptype'), clickedCheckbox.prop('checked'));
+        update_perm_table(); // Reload checkboxes
+    });
 
-    define_attribute_observer(perm_list, 'filepath', update_perm_list)
-
-    return perm_list
+    return perm_table;
 }
+
 
 
 // -- a general-purpose User Select dialog which can be opened when we need to select a user. -- 
