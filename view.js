@@ -85,6 +85,42 @@
 //     applyMutuallyExclusiveCheckboxes('permissions_table');
 // }
 
+// (Brian) this works but is purely visual without any actual function. Need to figure out how to connect it to the backend.
+// $(document).ready(function() {
+//     // Attach event listener to a stable parent element, delegating to .groupcheckbox
+//     $('body').on('change', '.groupcheckbox', function() {
+//         if($(this).is(':checked')) {
+//             let currentGroup = $(this).attr('group');
+//             let currentType = $(this).attr('ptype'); // 'allow' or 'deny'
+//             let oppositeType = currentType === 'allow' ? 'deny' : 'allow';
+
+//             // Uncheck the opposite checkbox
+//             $(`input[group="${currentGroup}"][ptype="${oppositeType}"]`).prop('checked', false);
+//         }
+//     });
+// });
+
+//(Brian) this is the actual function that toggles the permissions. It should be connected to the backend. LMK if it needs to be modified.
+$(document).ready(function() {
+    $('body').on('change', '.groupcheckbox', function() {
+        let checked = $(this).is(':checked');
+        let currentGroup = $(this).attr('group');
+        let currentType = $(this).attr('ptype'); 
+        let username = $(this).closest('table').attr('username');
+        let filepath = $(this).closest('table').attr('filepath');
+        let oppositeType = currentType === 'allow' ? 'deny' : 'allow';
+        let oppositeCheckbox = $(`input[group="${currentGroup}"][ptype="${oppositeType}"]`);
+        if(oppositeCheckbox.is(':checked')) {
+            oppositeCheckbox.prop('checked', false);
+            toggle_permission_group(filepath, username, currentGroup, oppositeType, false);
+        }
+        toggle_permission_group(filepath, username, currentGroup, currentType, checked);
+        // update_group_checkboxes(); // Uncomment if there's a need to refresh the UI immediately
+    });
+});
+
+
+
 // ---- Display file structure ----
 
 // (recursively) makes and returns an html element (wrapped in a jquery object) for a given file object
