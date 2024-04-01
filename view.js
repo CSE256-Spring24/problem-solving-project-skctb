@@ -54,52 +54,6 @@
         confirmation_dialog.empty().append('Your change has been made.').dialog('open')
     })
 
-    // (Brian) early attempt to make toggles mutually exclusive.
-// function applyMutuallyExclusiveCheckboxes(id_prefix) {
-//     // Access the table using its ID prefix
-//     const permTable = $('#' + id_prefix);
-
-//     // Add change event listeners to checkboxes
-//     permTable.find('.perm_checkbox').on('change', function() {
-//         const $thisCheckbox = $(this);
-//         const isChecked = $thisCheckbox.is(':checked');
-//         const permission = $thisCheckbox.attr('permission');
-//         const ptype = $thisCheckbox.attr('ptype');
-//         const oppositeType = ptype === 'allow' ? 'deny' : 'allow';
-
-//         // Find the opposite checkbox within the same permission row and uncheck it
-//         if (isChecked) {
-//             permTable.find(`.perm_checkbox[permission="${permission}"][ptype="${oppositeType}"]`).each(function() {
-//                 if (this !== $thisCheckbox[0]) {
-//                     $(this).prop('checked', false);
-//                 }
-//             });
-//         }
-//     });
-// }
-
-// function setupPermissionsForUser(userId) {
-//     let permissions = fetchPermissionsForUser(userId); // Assume this fetches the necessary permissions
-//     define_permission_checkboxes('permissions_table', permissions);
-
-//     applyMutuallyExclusiveCheckboxes('permissions_table');
-// }
-
-// (Brian) this works but is purely visual without any actual function. Need to figure out how to connect it to the backend.
-// $(document).ready(function() {
-//     // Attach event listener to a stable parent element, delegating to .groupcheckbox
-//     $('body').on('change', '.groupcheckbox', function() {
-//         if($(this).is(':checked')) {
-//             let currentGroup = $(this).attr('group');
-//             let currentType = $(this).attr('ptype'); // 'allow' or 'deny'
-//             let oppositeType = currentType === 'allow' ? 'deny' : 'allow';
-
-//             // Uncheck the opposite checkbox
-//             $(`input[group="${currentGroup}"][ptype="${oppositeType}"]`).prop('checked', false);
-//         }
-//     });
-// });
-
 //(Brian) this is the actual function that toggles the permissions. It should be connected to the backend. LMK if it needs to be modified.
 $(document).ready(function() {
     $('body').on('change', '.groupcheckbox', function() {
