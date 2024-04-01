@@ -54,6 +54,37 @@
         confirmation_dialog.empty().append('Your change has been made.').dialog('open')
     })
 
+    // (Brian) early attempt to make toggles mutually exclusive.
+// function applyMutuallyExclusiveCheckboxes(id_prefix) {
+//     // Access the table using its ID prefix
+//     const permTable = $('#' + id_prefix);
+
+//     // Add change event listeners to checkboxes
+//     permTable.find('.perm_checkbox').on('change', function() {
+//         const $thisCheckbox = $(this);
+//         const isChecked = $thisCheckbox.is(':checked');
+//         const permission = $thisCheckbox.attr('permission');
+//         const ptype = $thisCheckbox.attr('ptype');
+//         const oppositeType = ptype === 'allow' ? 'deny' : 'allow';
+
+//         // Find the opposite checkbox within the same permission row and uncheck it
+//         if (isChecked) {
+//             permTable.find(`.perm_checkbox[permission="${permission}"][ptype="${oppositeType}"]`).each(function() {
+//                 if (this !== $thisCheckbox[0]) {
+//                     $(this).prop('checked', false);
+//                 }
+//             });
+//         }
+//     });
+// }
+
+// function setupPermissionsForUser(userId) {
+//     let permissions = fetchPermissionsForUser(userId); // Assume this fetches the necessary permissions
+//     define_permission_checkboxes('permissions_table', permissions);
+
+//     applyMutuallyExclusiveCheckboxes('permissions_table');
+// }
+
 // ---- Display file structure ----
 
 // (recursively) makes and returns an html element (wrapped in a jquery object) for a given file object
