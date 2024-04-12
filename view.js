@@ -57,11 +57,15 @@
         let currentType = $(this).attr('ptype'); 
         let oppositeType = currentType === 'allow' ? 'deny' : 'allow';
         let oppositeCheckbox = $(`input[group="${currentGroup}"][ptype="${oppositeType}"]`);
-        console.log(checked)
-        console.log(currentGroup)
-        console.log(currentType)
-        console.log(oppositeType)
-        console.log(oppositeCheckbox)
+        if(checked.is(':checked')) {
+            confirmation_dialog.empty().append(currentGroup + " is now set to " + currentType).dialog('open')
+        }
+        confirmation_dialog.empty().append("You removed the " + currentType + " permission from " + currentGroup).dialog('open')
+        // console.log(checked)
+        // console.log(currentGroup)
+        // console.log(currentType)
+        // console.log(oppositeType)
+        // console.log(oppositeCheckbox)
     })
 
 //(Brian) this is the actual function that toggles the permissions. It should be connected to the backend. LMK if it needs to be modified.
