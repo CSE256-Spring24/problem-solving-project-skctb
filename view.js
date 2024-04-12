@@ -57,11 +57,13 @@
         let currentType = $(this).attr('ptype'); 
         let oppositeType = currentType === 'allow' ? 'deny' : 'allow';
         let oppositeCheckbox = $(`input[group="${currentGroup}"][ptype="${oppositeType}"]`);
+        console.log(checked)
         if(checked) {
             confirmation_dialog.empty().append(currentGroup + " is now set to " + currentType).dialog('open')
+        } else {
+            confirmation_dialog.empty().append("You removed the " + currentType + " permission from " + currentGroup).dialog('open')
         }
-        confirmation_dialog.empty().append("You removed the " + currentType + " permission from " + currentGroup).dialog('open')
-        // console.log(checked)
+        console.log(checked)
         // console.log(currentGroup)
         // console.log(currentType)
         // console.log(oppositeType)
