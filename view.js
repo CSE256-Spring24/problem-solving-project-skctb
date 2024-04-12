@@ -51,23 +51,16 @@
     // (Christine) Open confirmation dialog when an edit to permissions is made
     $('.groupcheckbox').click(function(){
         console.log('checkbox button clicked!')
+        // (Khushi) Added the updates to the dialog
         confirmation_dialog.empty().append('Your change has been made.').dialog('open')
         let checked = $(this).is(':checked');
         let currentGroup = $(this).attr('group');
         let currentType = $(this).attr('ptype'); 
-        let oppositeType = currentType === 'allow' ? 'deny' : 'allow';
-        let oppositeCheckbox = $(`input[group="${currentGroup}"][ptype="${oppositeType}"]`);
-        console.log(checked)
         if(checked) {
             confirmation_dialog.empty().append(currentGroup + " is now set to " + currentType).dialog('open')
         } else {
             confirmation_dialog.empty().append("You removed the " + currentType + " permission from " + currentGroup).dialog('open')
         }
-        console.log(checked)
-        // console.log(currentGroup)
-        // console.log(currentType)
-        // console.log(oppositeType)
-        // console.log(oppositeCheckbox)
     })
 
 //(Brian) this is the actual function that toggles the permissions. It should be connected to the backend. LMK if it needs to be modified.
