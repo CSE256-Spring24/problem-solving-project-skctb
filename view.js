@@ -1,24 +1,50 @@
 // ---- Define your dialogs  and panels here ----
-   // (Christine) Added description to files
     $('#filestructure').append('<p class="title-text">See files and edit permissions here:</p>')
 
+    // (Sandhya) Added ability to choose file in addition to user when checking permissions
+    var file_selector = '<br><p> Select a file:</p>'
+    file_selector += '<input type="radio" name="file" value="presentation_documents/important_file.txt">important_file.txt<br>'
+    file_selector += '<input type="radio" name="file" value="presentation_documents/presentation.ppt">presentation.ppt<br>'
+    file_selector += '<input type="radio" name="file" value="important_project/project_file_1.txt">project_file_1.txt<br>'
+    file_selector += '<input type="radio" name="file" value="important_project/project_file_2.txt">project_file_2.txt<br>'
+    file_selector += '<input type="radio" name="file" value="intern_subproject/internship_file_1.tx">internship_file_1.txt<br>'
+    file_selector += '<input type="radio" name="file" value="intern_subproject/internship_file_2.txt">internship_file_2.txt<br>'
+    file_selector += '<input type="radio" name="file" value="Lecture_Notes/Lecture1.txt">Lecture1.txt<br>'
+    file_selector += '<input type="radio" name="file" value="Lecture_Notes/Lecture2.txt">Lecture2.txt<br>'
+    file_selector += '<input type="radio" name="file" value="Lecture_Notes/Lecture3.txt">Lecture3.txt<br>'
+    file_selector += '<input type="radio" name="file" value="Lecture_Notes/Lecture4.txt">Lecture4.txt<br>'
+    file_selector += '<br><button type="button" id="submitbutton" onclick="getResult()">Submit</button>'
+
+    function getResult() {
+        var options = document.getElementsByName('file');
+        
+        for (i=0; i<options.length; i++){
+            if (options[i].checked){
+                filepath = '/C/' + options[i].value;
+                
+            }
+        }
+        console.log(filepath)
+    }
+    
+    // Description for effective permissions panel
+    var panel_description = '<p class="title-text">Select a file and user here to see their current permissions:</p>'
+    $('#sidepanel').append(panel_description)
+
+    $('#sidepanel').append(file_selector)
+
+    // show user selector/append to side panel element
     var user_selector = define_new_user_select_field("user", "Select user", on_user_change = function(selected_user){
         $('#permission').attr('username', selected_user)
-        $('#permission').attr('filepath', '/C/presentation_documents/important_file.txt')
+        $('#permission').attr('filepath', filepath)
         // !! need to make above line more general 
         // $('#permission').attr('filepath', $(this).attr('username'))
     })
-    
-    // (Christine) Description for effective permissions panel
-    var panel_description = '<p class="title-text">Select user here to see their current permissions:</p>'
-    // $('#sidepanel').append(panel_description)
-    
-    // show user selector/append to side panel element
-    // $('#sidepanel').append(user_selector)
+    $('#sidepanel').append(user_selector)
 
     var effective_permissions = define_new_effective_permissions("permission", add_icon_col = true, which_permissions = null)
     // show side panel
-    // $('#sidepanel').append(effective_permissions)
+    $('#sidepanel').append(effective_permissions)
         
     // 1. Define the dialog
     //Changed text to user permissions
