@@ -20,7 +20,19 @@
     })
 
     $('#filestructure').append('<p class="title-text">See files and edit permissions here:</p>')
+//(Temi)Adding Legend to Page-> Need to simplify and prioritize the most important text
+var legend_title = '<div><p class="title-text">Legend</p><br></div>'; // Added closing </div>
+var addUser_description = '<p class="paragraph-text"><strong>Add User</strong> - The add user button adds a user and its permissions to the file</p><br>'; // Corrected variable name casing
+var removeUser_description = '<p class="paragraph-text"><strong>Remove User</strong> - (Because permissions are often inherited from other files, this button will not work until you turn off its inheritance under advanced settings) The remove user button removes a user and their permissions from a file</p><br>'; // Corrected variable name casing
+var advancedSettings_section = '<div><p class="paragraph-text"><i>Advanced Settings<i></p><br></div>';
+var advancedSettings_description = '<p class="paragraph-text"><strong>Advanced Settings</strong> - Contains permissions for each user, where they are inheriting permissions from, and allows you to change the <strong>owner</strong> of a file</p><br>';
+var advancedSettings_editPermissions = '<p class="paragraph-text"><strong>Edit Permissions</strong> -Allows you to edit<strong> more specific</strong> permissions for each user</p><br>';
 
+// Ensure that the DOM is ready before executing jQuery code
+$(document).ready(function() {
+    // Append the HTML content to the element with ID 'sidepanel'
+    $('#filestructure').append(legend_title, addUser_description, removeUser_description, advancedSettings_section, advancedSettings_description, advancedSettings_editPermissions);
+});
     // (Sandhya) Added ability to choose file in addition to user when checking permissions
     var file_selector = '<br><p> Select a file:</p>'
     file_selector += '<input type="radio" name="file" value="presentation_documents/important_file.txt">important_file.txt<br>'
