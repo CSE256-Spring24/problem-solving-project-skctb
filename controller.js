@@ -29,6 +29,22 @@ correct_scenario_solutions = {
 
 // defines how the 13 permission settings in the model fit into the 5 groups of permissions exposed in the "basic" interface.
 permission_groups = {
+    Full_control: [
+        permissions.LIST,
+        permissions.READ_ATTR,
+        permissions.READ_EXTENDED_ATTR,
+        permissions.READ_PERMS,
+        permissions.EXECUTE,
+        permissions.WRITE_DATA,
+        permissions.APPEND_DATA,
+        permissions.WRITE_ATTR,
+        permissions.WRITE_EXTENDED_ATTR,
+        permissions.DELETE,
+        permissions.DELETE_SUB,
+        permissions.READ_PERMS,
+        permissions.CHANGE_PERMS,
+        permissions.TAKE_OWNERSHIP,
+    ],
     Read: [
         permissions.LIST,
         permissions.READ_ATTR,
@@ -56,22 +72,22 @@ permission_groups = {
         permissions.DELETE,
         permissions.DELETE_SUB,
     ],
-    Full_control: [
-        permissions.LIST,
-        permissions.READ_ATTR,
-        permissions.READ_EXTENDED_ATTR,
-        permissions.READ_PERMS,
-        permissions.EXECUTE,
-        permissions.WRITE_DATA,
-        permissions.APPEND_DATA,
-        permissions.WRITE_ATTR,
-        permissions.WRITE_EXTENDED_ATTR,
-        permissions.DELETE,
-        permissions.DELETE_SUB,
-        permissions.READ_PERMS,
-        permissions.CHANGE_PERMS,
-        permissions.TAKE_OWNERSHIP,
-    ],
+    // Full_control: [
+    //     permissions.LIST,
+    //     permissions.READ_ATTR,
+    //     permissions.READ_EXTENDED_ATTR,
+    //     permissions.READ_PERMS,
+    //     permissions.EXECUTE,
+    //     permissions.WRITE_DATA,
+    //     permissions.APPEND_DATA,
+    //     permissions.WRITE_ATTR,
+    //     permissions.WRITE_EXTENDED_ATTR,
+    //     permissions.DELETE,
+    //     permissions.DELETE_SUB,
+    //     permissions.READ_PERMS,
+    //     permissions.CHANGE_PERMS,
+    //     permissions.TAKE_OWNERSHIP,
+    // ],
 };
 perm_groupnames = Object.keys(permission_groups);
 perm_groupnames.push('Special_permissions');

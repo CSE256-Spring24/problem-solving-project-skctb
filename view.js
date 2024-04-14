@@ -1,10 +1,30 @@
 // ---- Define your dialogs  and panels here ----
+    // (Christine) Added dialog that appears upon page loading. Can't add class to the dialog to make bg yellow though
+    $(document).ready(function() {
+        var popupRules = "<ul>" +
+                        "<li>After solving the task, SUBMIT the task</li>" +
+                        "<li>LEFT side: The Edit permissions buttons are for specific folders or files</li>" +
+                        "<li>RIGHT side: Use the selectors to check permissions for specific combinations of files and users</li>" +
+                    "</ul>";
+
+        let popup_dialog = define_new_dialog('unique_dialog_id', 'READ ME FIRST');
+        popup_dialog.dialog({
+            resizable: false,
+            draggable: false
+            // dialogClass: 'popup-dialog'
+        })
+        
+        // $('unique_dialog_id').addclass('popup-dialog') // NO ADD
+        popup_dialog.append(popupRules).dialog('open')
+        
+    })
+
     $('#filestructure').append('<p class="title-text">See files and edit permissions here:</p>')
 
     // (Sandhya) Added ability to choose file in addition to user when checking permissions
     var file_selector = '<br><p> Select a file:</p>'
     file_selector += '<input type="radio" name="file" value="presentation_documents/important_file.txt">important_file.txt<br>'
-    file_selector += '<input type="radio" name="file" value="presentation_documents/presentation.ppt">presentation.ppt<br>'
+    file_selector += '<input type="radio" name="file" value="presentation_documents/preui-id-229sentation.ppt">presentation.ppt<br>'
     file_selector += '<input type="radio" name="file" value="important_project/project_file_1.txt">project_file_1.txt<br>'
     file_selector += '<input type="radio" name="file" value="important_project/project_file_2.txt">project_file_2.txt<br>'
     file_selector += '<input type="radio" name="file" value="intern_subproject/internship_file_1.tx">internship_file_1.txt<br>'
@@ -13,7 +33,7 @@
     file_selector += '<input type="radio" name="file" value="Lecture_Notes/Lecture2.txt">Lecture2.txt<br>'
     file_selector += '<input type="radio" name="file" value="Lecture_Notes/Lecture3.txt">Lecture3.txt<br>'
     file_selector += '<input type="radio" name="file" value="Lecture_Notes/Lecture4.txt">Lecture4.txt<br>'
-    file_selector += '<br><button type="button" id="submitbutton" onclick="getResult()">Submit</button>'
+    file_selector += '<br><button type="button" id="submitbutton" onclick="getResult()">Select file</button>'
 
     function getResult() {
         var options = document.getElementsByName('file');
@@ -29,7 +49,10 @@
 
     // Description for effective permissions panel
     var panel_description = '<p class="title-text">Select a file and user here to see their current permissions:</p>'
+    
     $('#sidepanel').append(panel_description)
+    $('#sidepanel').append('<p>Make sure to select first the file, then the user, using the two buttons.</p>')
+
 
     $('#sidepanel').append(file_selector)
 
@@ -44,7 +67,7 @@
 
     var effective_permissions = define_new_effective_permissions("permission", add_icon_col = true, which_permissions = null)
     // show side panel
-    // $('#sidepanel').append(effective_permissions)
+    $('#sidepanel').append(effective_permissions)
         
     // 1. Define the dialog
     //Changed text to user permissions
