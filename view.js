@@ -33,7 +33,7 @@
     file_selector += '<input type="radio" name="file" value="Lecture_Notes/Lecture2.txt">Lecture2.txt<br>'
     file_selector += '<input type="radio" name="file" value="Lecture_Notes/Lecture3.txt">Lecture3.txt<br>'
     file_selector += '<input type="radio" name="file" value="Lecture_Notes/Lecture4.txt">Lecture4.txt<br>'
-    file_selector += '<br><button type="button" id="submitbutton" onclick="getResult()">Submit</button>'
+    file_selector += '<br><button type="button" id="submitbutton" onclick="getResult()">Select file</button>'
 
     function getResult() {
         var options = document.getElementsByName('file');
@@ -60,7 +60,10 @@
     });
     // Description for effective permissions panel
     var panel_description = '<p class="title-text">Select a file and user here to see their current permissions:</p>'
+    
     $('#sidepanel').append(panel_description)
+    $('#sidepanel').append('<p>Make sure to select first the file, then the user, using the two buttons.</p>')
+
 
     $('#sidepanel').append(file_selector)
 
