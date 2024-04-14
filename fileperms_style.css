@@ -46,3 +46,7 @@
 #submitbutton {
     padding: 7px;
 }
+
+.popup-dialog {
+    background: yellow; /* Set background color to yellow */
+}
