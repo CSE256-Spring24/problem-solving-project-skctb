@@ -26,18 +26,7 @@
         }
         console.log(filepath)
     }
-    //(Temi)Adding Legend to Page-> Need to simplify and prioritize the most important text
-    var legend_title = '<div><p class="title-text">Legend</p><br></div>'; // Added closing </div>
-    var addUser_description = '<p class="paragraph-text"><strong>Add User</strong> - The add user button adds a user and its permissions to the file</p><br>'; // Corrected variable name casing
-    var removeUser_description = '<p class="paragraph-text"><strong>Remove User</strong> - (Because permissions are often inherited from other files, this button will not work until you turn off its inheritance under advanced settings) The remove user button removes a user and their permissions from a file</p><br>'; // Corrected variable name casing
-    var advancedSettings_section = '<div><p class="paragraph-text"><i>Advanced Settings<i></p><br></div>';
-    var advancedSettings_description = '<p class="paragraph-text"><strong>Advanced Settings</strong> - Contains permissions for each user, where they are inheriting permissions from, and allows you to change the <strong>owner</strong> of a file</p><br>';
-    var advancedSettings_editPermissions = '<p class="paragraph-text"><strong>Edit Permissions</strong> - Contains permissions for each user, where they are inheriting permissions from, and allows you to change the <strong>owner</strong> of a file</p><br>';
-    // Ensure that the DOM is ready before executing jQuery code
-    $(document).ready(function() {
-        // Append the HTML content to the element with ID 'sidepanel'
-        $('#sidepanel').append(legend_title, addUser_description, removeUser_description, advancedSettings_section, advancedSettings_description);
-    });
+
     // Description for effective permissions panel
     var panel_description = '<p class="title-text">Select a file and user here to see their current permissions:</p>'
     $('#sidepanel').append(panel_description)
