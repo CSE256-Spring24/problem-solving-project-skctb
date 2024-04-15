@@ -114,7 +114,8 @@
                                     id="adv_effective_tab_elem">View User Permissions</a></li>
                         </ul>
                         <div id="adv_permissions_tab">
-                            <div id="adv_perm_object_name" class="section">Object Name: <span
+                            <!--Changes to language to make it more understandable-->
+                            <div id="adv_perm_object_name" class="section">File Name: <span
                                     id="adv_perm_filepath"></span></div>
                             <div id="adv_perm_entries_text">Permission entries:</div>
                             <div id="adv_perm_table_container" style="height:100px;overflow-y:scroll"
@@ -129,22 +130,23 @@
                                 </table>
                             </div>
                             <button id="adv_perm_edit" class="ui-button ui-widget ui-corner-all">Edit Permissions</button>
-                            <div id="adv_perm_inheritance_div">
+                            <div id="_div">
                                 <input type="checkbox" id="adv_perm_inheritance" name="inherit">
                                 <label for="adv_perm_inheritance" id="adv_perm_inheritance_label">Include inheritable
-                                    permissions from this object's parent</label>
+                                    permissions from this file's parent</label>
                             </div>
                             <div id="adv_perm_replace_child_div">
                                 <input type="checkbox" id="adv_perm_replace_child_permissions" name="replace_child">
                                 <label for="adv_perm_replace_child_permissions"
-                                    id="adv_perm_replace_child_permissions_label">Replace all child object permissions
-                                    with inheritable permissions from this object</label>
+                                    id="adv_perm_replace_child_permissions_label">Replace all specific file permissions
+                                    with inheritable permissions from another file</label>
                             </div>
                         </div>
                         <div id="adv_owner_tab">
+                            <!--(Temi)Changed language for clarity purposes-->
                             <div id="adv_owner_explanation" class="section">You can take or assign ownership of this
-                                object if you have the required permissions or privileges.</div>
-                            <div id="adv_owner_object_name" class="section">Object Name: <span
+                                file if you have the required permissions or privileges.</div>
+                            <div id="adv_owner_object_name" class="section">FIle Name: <span
                                     id="adv_owner_filepath"></span></div>
                             <div id="adv_owner_current_owner_text">Current owner:</div>
                             <div id="adv_owner_current_owner" class="ui-widget-content section"></div>
@@ -154,7 +156,7 @@
                                 Owner</button>
                         </div>
                         <div id="adv_effective_tab">
-                            <div id="adv_effective_object_name" class="section">Object Name: <span
+                            <div id="adv_effective_object_name" class="section">File Name: <span
                                     id="adv_effective_filepath"></span></div>
                             <div id="adv_effective_user_text">Group or user name:</div>
                             <div id="adv_effective_current_user_line" class="section">

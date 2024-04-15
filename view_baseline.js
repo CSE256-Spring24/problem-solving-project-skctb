@@ -149,7 +149,9 @@ perm_remove_user_button.click(function(){
 
 // --- Append all the elements to the permissions dialog in the right order: --- 
 perm_dialog.append(obj_name_div)
-perm_dialog.append($('<div id="permissions_user_title">Current group or user names with permission constraint for this file:</div>'))
+perm_dialog.append($('<div id="permissions_user_title">Current group or user names with permission constraint for this file:</div><br>'))
+//(Temi) Appended information about advanced settings
+perm_dialog.append($('<div id="permissions_user_title">If a specific user  isnt listed below but, their group is, check advanced settings</div>'))
 perm_dialog.append(file_permission_users)
 perm_dialog.append(perm_add_user_select)
 perm_add_user_select.append(perm_remove_user_button) // Cheating a bit again - add the remove button the the 'add user select' div, just so it shows up on the same line.
@@ -357,10 +359,11 @@ $('#adv_perm_inheritance').change(function(){
     }
     else {
         // has just been turned off - pop up dialog with add/remove/cancel
+        //(Temi)Changed text to make it more understandable for the user
         $(`<div id="add_remove_cancel" title="Security">
-            Warning: if you proceed, inheritable permissions will no longer propagate to this object.<br/>
-            - Click Add to convert and add inherited parent permissions as explicit permissions on this object<br/>
-            - Click Remove to remove inherited parent permissions from this object<br/>
+            Warning: If you proceed, this file won't inherit permissions<br/>
+            - Click Add to convert and add inherited parent permissions as explicit permissions on this file<br/>
+            - Click Remove to remove inherited parent permissions from this file<br/>
             - Click Cancel if you do not want to modify inheritance settings at this time.<br/>
         </div>`).dialog({ // TODO: don't create this dialog on the fly
             modal: true,
@@ -413,8 +416,9 @@ $('#adv_perm_replace_child_permissions').change(function(){
         // we only care when it's been checked (nothing happens on uncheck) (this should really not be a checkbox...)
         let filepath = $('#advdialog').attr('filepath')
         let file_obj = path_to_file[filepath]
+//(Temi)Changed language to make this text slightly more understandable 
         $(`<div id="replace_perm_dialog" title="Security">
-            This will replace explicitly defined permissions on all descendants of this object with inheritable permissions from ${file_obj.filename}.<br/>
+            This will replace explicitly defined permissions on all files that inherit permissions from ${file_obj.filename}.<br/>
             Do you wish to continue?
         </div>`).dialog({
             modal: true,
