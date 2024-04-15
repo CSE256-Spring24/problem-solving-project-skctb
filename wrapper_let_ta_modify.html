@@ -94,8 +94,7 @@
                 <!-- structure for Permission Entry dialog: -->
 
                 <div title="Permission Entry" id="permentry">
-                    <div id="perm_entry_inheritance_explanation" style="display:none" class="section">This permission is
-                        inherited from the parent object. Make changes here to override the inherited permissions.</div>
+                    <div id="perm_entry_inheritance_explanation" style="display:none" class="section">This file follows the same access rules as its 'parent' or containing folder. You can change these rules here if you want something different for this file.</div>
                     <span id="perm_entry_name_text">Name: </span>
                     <span id="perm_entry_username" class="ui-widget-content section"
                         style="width:200px;display:inline-block;"></span>
@@ -136,14 +135,12 @@
                             <button id="adv_perm_edit" class="ui-button ui-widget ui-corner-all">Edit...</button>
                             <div id="adv_perm_inheritance_div">
                                 <input type="checkbox" id="adv_perm_inheritance" name="inherit">
-                                <label for="adv_perm_inheritance" id="adv_perm_inheritance_label">Include inheritable
-                                    permissions from this object's parent</label>
+                                <label for="adv_perm_inheritance" id="adv_perm_inheritance_label">Use the access rules from this item's 'parent' or the folder it's in.</label>
                             </div>
                             <div id="adv_perm_replace_child_div">
                                 <input type="checkbox" id="adv_perm_replace_child_permissions" name="replace_child">
                                 <label for="adv_perm_replace_child_permissions"
-                                    id="adv_perm_replace_child_permissions_label">Replace all child object permissions
-                                    with inheritable permissions from this object</label>
+                                    id="adv_perm_replace_child_permissions_label">Set the access rules for all files inside this folder to match this folder's rules, removing their unique rules.</label>
                             </div>
                         </div>
                         <div id="adv_owner_tab">
