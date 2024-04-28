@@ -155,6 +155,7 @@ perm_dialog.append(file_permission_users)
 perm_dialog.append(perm_add_user_select)
 perm_add_user_select.append(perm_remove_user_button) // Cheating a bit again - add the remove button the the 'add user select' div, just so it shows up on the same line.
 perm_dialog.append(grouped_permissions)
+perm_dialog.append("Check First: If a group has permissions set to them by a parent, make sure each file allows parent permission. In order to check, go to Advanced Permissions & ensure the box allowing parent permissions is checked.")
 perm_dialog.append("Note: If a group is denied a permission, the all members of that group will be denied access. Removing a 'Deny' constraint will not give the group access unless a member is given an 'Allow'.")
 perm_dialog.append(advanced_expl_div)
 
