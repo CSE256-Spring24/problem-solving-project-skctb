@@ -114,7 +114,11 @@ $(document).ready(function() {
         console.log('checkbox button clicked!')
         confirmation_dialog.empty().append('Your change has been made.').dialog('open')
     })
-
+    //(Temi) Add new dialog that tells users how they can select a user to change permissions
+    $('#user_select_ok_button').click(function(){
+        console.log('checkbox button clicked!')
+        confirmation_dialog.empty().append('You added a new user! To change their permissions make sure their name is highlighted!(selected from the list of users)').dialog('open')
+    })
 //(Brian) this is the actual function that toggles the permissions. It should be connected to the backend. LMK if it needs to be modified.
 $(document).ready(function() {
     $('body').on('change', '.groupcheckbox', function() {
