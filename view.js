@@ -19,7 +19,9 @@
         
     })
 
-    $('#filestructure').append('<p class="title-text">See files and edit permissions here:</p>')
+    $('#filestructure').append('<p class="title-text">START HERE: Edit Permissions</p>')
+    $('#filestructure').append('<p class="paragraph-text"><i>To edit permissions, select a user first. Then, you will see the permissions options for that user. *The full_control permission will check/uncheck all the permissions. Advanced Settings only needs to be edited to change owner or see in-depth permissions.<i></p>')
+
 //(Temi)Adding Legend to Page-> Need to simplify and prioritize the most important text
 var legend_title = '<div><p class="title-text">Legend</p><br></div>'; // Added closing </div>
 var addUser_description = '<p class="paragraph-text"><strong>Add User</strong> - The add user button adds a user and its permissions to the file</p><br>'; // Corrected variable name casing
@@ -32,7 +34,14 @@ var advancedSettings_editPermissions = '<p class="paragraph-text"><strong>Edit P
 $(document).ready(function() {
     // Append the HTML content to the element with ID 'sidepanel'
     $('#filestructure').append(legend_title, addUser_description, removeUser_description, advancedSettings_section, advancedSettings_description, advancedSettings_editPermissions);
-});
+    // $('#filestructure').append('<br><button type="button" id="openImageButton" onclick="getResult()">Permissions Info</button>')
+    $('#filestructure').append('<br><button type="button" id="openImageButton">Click here to see Permissions chart</button>')
+    $(document).on('click', '#openImageButton', function() { // open image URL
+        const imageUrl = 'https://drive.google.com/uc?export=view&id=1F51XbT_yiMZa1NxZjzGN2UZ-ao7APvbd';
+        window.open(imageUrl, '_blank');
+    })
+})
+
     // (Sandhya) Added ability to choose file in addition to user when checking permissions
     var file_selector = '<br><p> Select a file:</p>'
     file_selector += '<input type="radio" name="file" value="presentation_documents/important_file.txt">important_file.txt<br>'
@@ -60,10 +69,10 @@ $(document).ready(function() {
     }
 
     // Description for effective permissions panel
-    var panel_description = '<p class="title-text">Select a file and user here to see their current permissions:</p>'
+    var panel_description = '<p class="title-text">View User Current Permissions </p>'
     
     $('#sidepanel').append(panel_description)
-    $('#sidepanel').append('<p>Make sure to select first the file, then the user, using the two buttons.</p>')
+    $('#sidepanel').append('<p class="paragraph-text"><i>Make sure to select first the file, then the user, using the two buttons.<i></p>')
 
 
     $('#sidepanel').append(file_selector)
