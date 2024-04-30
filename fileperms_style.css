@@ -1,3 +1,7 @@
+*{
+    font-family: 'montserrat', sans-serif;
+}
+
 .file {
     padding: 8;
     border-bottom: 1px solid #dddddd;
@@ -50,3 +54,99 @@
 .popup-dialog {
     background: yellow; /* Set background color to yellow */
 }
+
+.popup-dialog {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    color: #333333;
+    width: 400px;
+    margin: auto;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.popup-dialog ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+}
+
+.popup-dialog li {
+    background-color: #f8f8f8;
+    border-left: 5px solid #007FFF;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    border-radius: 3px;
+}
+
+#sidepanel {
+    margin-left: 10px;
+    margin-right: 3px;
+    font-family: 'montserrat', sans-serif;
+    width: auto;
+}
+
+#filestructure {
+    margin-left: 3px;
+    margin-right: 10px;
+    width: auto;
+}
+
+#filestructure p {
+    font-size: 16px;
+    font-weight: regular;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.permissions_user_title {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-left: 4px solid #007FFF;
+    border-radius: 3px;
+}
+
+.permissions_note {
+    margin-top: 20px;
+    font-style: italic;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #007FFF;
+    color: white;
+    border-radius: 3px;
+}
+
+.title-text {
+    color: #0056b3;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.paragraph-text {
+    color: #333;
+    margin: 10px 0 10px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-left: 5px solid #007FFF;
+    border-radius: 3px;
+    line-height: 1.5;
+}
+
+.paragraph-text strong {
+    color: #000;
+    font-weight: bold;
+}
+
+.paragraph-text i {
+    font-style: italic;
+}
+

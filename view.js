@@ -8,6 +8,7 @@
                     "</ul>";
 
         let popup_dialog = define_new_dialog('unique_dialog_id', 'READ ME FIRST');
+        popup_dialog.addClass('popup-dialog');
         popup_dialog.dialog({
             resizable: false,
             draggable: false
@@ -23,23 +24,23 @@
     $('#filestructure').append('<p class="paragraph-text"><i>To edit permissions, select a user first. Then, you will see the permissions options for that user. *The full_control permission will check/uncheck all the permissions. Advanced Settings only needs to be edited to change owner or see in-depth permissions.<i></p>')
 
 //(Temi)Adding Legend to Page-> Need to simplify and prioritize the most important text
-var legend_title = '<div><p class="title-text">Legend</p><br></div>'; // Added closing </div>
-var addUser_description = '<p class="paragraph-text"><strong>Add User</strong> - The add user button adds a user and its permissions to the file</p><br>'; // Corrected variable name casing
-var removeUser_description = '<p class="paragraph-text"><strong>Remove User</strong> - (Because permissions are often inherited from other files, this button will not work until you turn off its inheritance under advanced settings) The remove user button removes a user and their permissions from a file</p><br>'; // Corrected variable name casing
-var advancedSettings_section = '<div><p class="paragraph-text"><i>Advanced Settings<i></p><br></div>';
-var advancedSettings_description = '<p class="paragraph-text"><strong>Advanced Settings</strong> - Contains permissions for each user, where they are inheriting permissions from, and allows you to change the <strong>owner</strong> of a file</p><br>';
-var advancedSettings_editPermissions = '<p class="paragraph-text"><strong>Edit Permissions</strong> -Allows you to edit<strong> more specific</strong> permissions for each user</p><br>';
+var legend_title = '<div><p class="title-text">Legend</p></div>'; // Added closing </div>
+var addUser_description = '<p class="paragraph-text"><strong>Add User</strong> - The add user button adds a user and its permissions to the file</p>'; // Corrected variable name casing
+var removeUser_description = '<p class="paragraph-text"><strong>Remove User</strong> - (Because permissions are often inherited from other files, this button will not work until you turn off its inheritance under advanced settings) The remove user button removes a user and their permissions from a file</p>'; // Corrected variable name casing
+var advancedSettings_section = '<div><p class="paragraph-text"><i>Advanced Settings<i></p></div>';
+var advancedSettings_description = '<p class="paragraph-text"><strong>Advanced Settings</strong> - Contains permissions for each user, where they are inheriting permissions from, and allows you to change the <strong>owner</strong> of a file</p>';
+var advancedSettings_editPermissions = '<p class="paragraph-text"><strong>Edit Permissions</strong> -Allows you to edit<strong> more specific</strong> permissions for each user</p>';
 
 // Ensure that the DOM is ready before executing jQuery code
 $(document).ready(function() {
-    // Append the HTML content to the element with ID 'sidepanel'
-    $('#filestructure').append(legend_title, addUser_description, removeUser_description, advancedSettings_section, advancedSettings_description, advancedSettings_editPermissions);
-    // $('#filestructure').append('<br><button type="button" id="openImageButton" onclick="getResult()">Permissions Info</button>')
     $('#filestructure').append('<br><button type="button" id="openImageButton">Click here to see Permissions chart</button>')
     $(document).on('click', '#openImageButton', function() { // open image URL
         const imageUrl = 'https://drive.google.com/uc?export=view&id=1F51XbT_yiMZa1NxZjzGN2UZ-ao7APvbd';
         window.open(imageUrl, '_blank');
     })
+     // Append the HTML content to the element with ID 'sidepanel'
+     $('#filestructure').append(legend_title, addUser_description, removeUser_description, advancedSettings_section, advancedSettings_description, advancedSettings_editPermissions);
+     // $('#filestructure').append('<br><button type="button" id="openImageButton" onclick="getResult()">Permissions Info</button>')
 })
 
     // (Sandhya) Added ability to choose file in addition to user when checking permissions

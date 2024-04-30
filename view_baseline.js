@@ -147,17 +147,20 @@ perm_remove_user_button.click(function(){
 
 
 // --- Append all the elements to the permissions dialog in the right order: --- 
-perm_dialog.append(obj_name_div)
-perm_dialog.append($('<div id="permissions_user_title">Current group or user names with permission constraint for this file:</div><br>'))
-//(Temi) Appended information about advanced settings
-perm_dialog.append($('<div id="permissions_user_title">If a specific user  isnt listed below but, their group is, check advanced settings under edit permissions</div>'))
-//(Khushi)
-perm_dialog.append('<div id="permissions_user_title"><strong>Check First: If a group has permissions set to them by a parent, make sure each file allows parent permission. In order to check, go to Advanced Permissions & ensure the box allowing parent permissions is checked.')
-perm_dialog.append(file_permission_users)
-perm_dialog.append(perm_add_user_select)
-perm_add_user_select.append(perm_remove_user_button) // Cheating a bit again - add the remove button the the 'add user select' div, just so it shows up on the same line.
-perm_dialog.append(grouped_permissions)
-perm_dialog.append("Note: If a group is denied a permission, the all members of that group will be denied access. Removing a 'Deny' constraint will not give the group access unless a member is given an 'Allow'.")
+perm_dialog.append(obj_name_div);
+perm_dialog.append($('<div class="permissions_user_title">Current group or user names with permission constraint for this file:</div>'));
+perm_dialog.append($('<div class="permissions_user_title">If a specific user isn\'t listed below but, their group is, check advanced settings under edit permissions</div>'));
+perm_dialog.append(file_permission_users);
+perm_dialog.append(perm_add_user_select);
+perm_add_user_select.append(perm_remove_user_button); // Cheating a bit again - add the remove button the the 'add user select' div, just so it shows up on the same line.
+perm_dialog.append(grouped_permissions);
+// (Temi) Appended information about advanced settings
+// (Khushi)
+perm_dialog.append('<div class="permissions_user_title"><strong>Check First:</strong> If a file has permissions set by a parent, ensure each file accepts parent permissions. Check this by going to Advanced Permissions and confirming the parent permission box is ticked.</div>');
+perm_dialog.append('<div class="permissions_note">Note: If a group is denied a permission, all members of that group will be denied access. Removing a "Deny" constraint will not give the group access unless a member is given an "Allow".</div>');
+
+
+
 perm_dialog.append(advanced_expl_div)
 
 // --- Additional logic for reloading contents when needed: ---
